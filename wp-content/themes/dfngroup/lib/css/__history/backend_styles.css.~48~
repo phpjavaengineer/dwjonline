@@ -1,0 +1,25 @@
+
+
+.color_code {
+	width: 80px;	
+}
+
+.color_order {
+	width: 55px;
+}
+
+
+/* Grid */
+
+.row {
+	width: 100%;
+	clear: both;
+}
+
+.row.col3 .col{
+	width: 30%;	
+}
+
+.row.col3 .col-2{
+	margin: 0 1.666666666666667%;
+}

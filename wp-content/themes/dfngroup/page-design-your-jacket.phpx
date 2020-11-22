@@ -1,0 +1,97 @@
+<?php
+/**
+ * Lollum
+ * 
+ * Template Name: Design
+ *
+ * @package WordPress
+ * @subpackage Lollum Themes
+ * @author Lollum <support@lollum.com>
+ *
+ */
+ 
+include_once(STYLESHEETPATH ."/lib/design_functions.php");
+include_once(STYLESHEETPATH ."/lib/common_functions.php");
+?>
+
+<?php get_header(); ?>
+
+
+<?php
+	wp_register_script('plu', THE ."/lib/upload/plupload.full.min.js");
+	wp_enqueue_script('plu', array("jquery"));
+
+	wp_enqueue_style( 'draw-css', THE ."/lib/css/frontend_styles.css" );
+
+	wp_enqueue_script( 'jquery' );
+	wp_enqueue_script( 'sub_functions', THE ."/lib/js/sub_functions.js", array("jquery") );
+	wp_enqueue_script( 'clothoo_functions', THE ."/lib/js/functions.js", array("jquery") );
+	wp_enqueue_script( 'draw', THE ."/lib/js/app.js", array("jquery") );
+
+?>
+
+<!-- BEGIN #page -->
+<div id="page" class="hfeed">
+
+<!-- BEGIN #main -->
+<div id="main" class="main1">
+	
+	<?php // START the loop ?>
+	<?php while (have_posts()) : the_post(); ?>
+
+		<!-- BEGIN #content -->
+		<div id="content" role="main">
+			<!-- BEGIN #post -->
+			<article class="post-343 page type-page status-publish hentry instock" id="post-343">
+				<!-- BEGIN .entry-page-items -->
+				<div class="entry-page-items">
+					<!-- BEGIN page-row -->
+					<div class="page-row" style="margin-bottom: 25px">
+						<div class="container">
+							<div class="row">
+								<div class="col-12 lol-page-item"><?php design_jacket(); ?></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</article>
+		</div>
+		<!-- END #content -->
+				
+	<?php endwhile; ?>
+	<?php // END the loop ?>
+
+<!-- END #main -->
+</div>
+
+</div>
+<!-- END #page -->
+
+<?php get_footer(); ?>
+<div id="send_msg_popup" class="popup">
+	<div class="popup_inner">
+		<a href="#" class="close_popup"><i class="fa fa-times"></i></a>
+		<div class="popup_content">
+			<h1>Send Message</h1>
+		<?php echo do_shortcode('[contact-form-7 id="1170" title="Contact Form Website 2.0"]'); ?>
+		</div>
+	</div>
+</div>
+
+<script>
+jQuery(document).ready(function($) {
+	if(window.location.hash) {
+		
+		var anchor_link = window.location.hash;
+		var exist = str.indexOf("wpcf"); 
+		
+		console.log(exist);
+		
+		if( exist ) {
+			$("#send_msg_popup").show();
+		}		
+		
+	}
+});
+</script>
